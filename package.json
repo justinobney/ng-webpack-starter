@@ -1,0 +1,58 @@
+{
+  "name": "ng-webpack-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --devtool eval --config webpack.config.js --progress --colors --hot",
+    "bundle": "cp src/index.html dist/ & webpack -p ./dist/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/justinobney/ng-webpack-starter.git"
+  },
+  "keywords": [
+    "angularjs",
+    "webpack",
+    "es6",
+    "javascript"
+  ],
+  "author": "Justin Obney <justinobney@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "angular-mocks": "^1.5.3",
+    "babel-core": "6.3.17",
+    "babel-loader": "6.2.0",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-stage-1": "6.3.13",
+    "css-loader": "0.23.0",
+    "file-loader": "0.8.5",
+    "jasmine": "^2.4.1",
+    "json-loader": "0.5.4",
+    "karma": "^0.13.22",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-growl-reporter": "^0.1.1",
+    "karma-jasmine": "^0.3.7",
+    "karma-phantomjs2-launcher": "^0.5.0",
+    "karma-webpack": "^1.7.0",
+    "node-libs-browser": "0.5.3",
+    "node-sass": "^3.4.2",
+    "null-loader": "^0.1.1",
+    "phantomjs2-ext": "^0.2.2",
+    "raw-loader": "0.5.1",
+    "sass-loader": "^3.1.2",
+    "style-loader": "0.13.0",
+    "url-loader": "0.5.7",
+    "wallaby-webpack": "0.0.18",
+    "webpack": "1.12.9",
+    "webpack-dev-server": "1.14.0"
+  },
+  "dependencies": {
+    "angular": "1.5.3",
+    "angular-resource": "^1.5.3",
+    "angular-ui-bootstrap": "^1.0.3",
+    "angular-ui-router": "^0.2.15",
+    "lodash": "^4.11.1"
+  }
+}
