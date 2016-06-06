@@ -1,7 +1,8 @@
 // npm
 import 'lodash';
+import 'angular';
 
-import angular from 'angular';
+
 import uibs from 'angular-ui-bootstrap';
 import uiRouter from 'angular-ui-router';
 
@@ -10,7 +11,7 @@ import routeConfig from './config/route.js';
 
 import screens from './screens/index.js';
 // import components from './components/index.js'
-// import services from './services/index.js';
+import services from './services/index.js';
 
 // app template
 import appTemplate from './screens/app.html';
@@ -25,9 +26,9 @@ function onAppStart (config) {
 const deps = [
   uibs,
   uiRouter,
-  screens
+  screens,
   // components,
-  // services
+  services
 ];
 
 

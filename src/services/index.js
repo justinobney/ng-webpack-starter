@@ -1,7 +1,7 @@
-// import workflow from './workflow.js'
+import sample from './sample.js';
 
 const deps = [
-  // workflow
+  sample
 ];
 
 export default angular

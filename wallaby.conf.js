@@ -38,7 +38,7 @@ module.exports = function (wallaby) {
         postprocessor: wallabyWebpack(webpackConfig),
         env: {
             type: 'browser',
-            runner: require('phantomjs2-ext').path,
+            runner: require('phantomjs2').path,
             params: {runner: '--web-security=false'}
         },
         testFramework: 'jasmine',
