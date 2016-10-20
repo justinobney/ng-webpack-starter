@@ -2,6 +2,7 @@
 import 'lodash';
 import 'angular';
 
+
 import uibs from 'angular-ui-bootstrap';
 import uiRouter from 'angular-ui-router';
 

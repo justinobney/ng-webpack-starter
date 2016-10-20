@@ -11,7 +11,7 @@ webpackConfig.module.loaders = webpackConfig.module.loaders.filter(function (l) 
     return l;
 });
 
-webpackConfig.entryPatterns = ['src/index.js', 'before-each-test.js', 'src/**/*.spec.js'];
+webpackConfig.entryPatterns = ['src/index.wallaby.js', 'before-each-test.js', 'src/**/*.spec.js'];
 
 module.exports = function (wallaby) {
     return {
@@ -36,11 +36,6 @@ module.exports = function (wallaby) {
             })
         },
         postprocessor: wallabyWebpack(webpackConfig),
-        env: {
-            type: 'browser',
-            runner: require('phantomjs2').path,
-            params: {runner: '--web-security=false'}
-        },
         testFramework: 'jasmine',
         bootstrap: function () {
             window.__moduleBundler.loadTests();

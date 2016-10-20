@@ -1,7 +1,7 @@
-// import pickList from './workflow/pick-list/index.js';
+import sampleComponent from './sample-component/index.js';
 
 const deps = [
-  // pickList
+  sampleComponent
 ];
 
 
