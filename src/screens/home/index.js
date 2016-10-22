@@ -1,11 +1,11 @@
 import styles from './index.scss';
 import template from './index.html';
 
-function controller($stateParams, $transitions){
+function controller(){
   const home = this;
 
   home.$onInit = () => {
-    console.log('home init', $stateParams, $transitions);
+    console.log('home init');
   }
 }
 

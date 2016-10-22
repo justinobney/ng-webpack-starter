@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --devtool eval --config webpack.config.js --progress --colors --hot",
-    "bundle": "cp src/index.html dist/ & webpack -p ./dist/bundle.js"
+    "bundle": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "babel-preset-stage-1": "6.3.13",
     "babel-preset-stage-2": "^6.5.0",
     "css-loader": "0.23.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "0.8.5",
     "jasmine": "^2.4.1",
     "json-loader": "0.5.4",
@@ -46,7 +47,8 @@
     "url-loader": "0.5.7",
     "wallaby-webpack": "0.0.18",
     "webpack": "1.12.9",
-    "webpack-dev-server": "1.14.0"
+    "webpack-dev-server": "1.14.0",
+    "webpack-split-by-path": "0.0.10"
   },
   "dependencies": {
     "angular": "<2",
