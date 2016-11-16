@@ -17,7 +17,7 @@ export default function routeConfig(
     })
     .state('app.login', {
       url: 'login',
-      template: 'login'
+      component: 'coreLogin'
     });
 
   $urlRouterProvider.otherwise("/home");
