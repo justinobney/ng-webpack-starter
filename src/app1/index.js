@@ -18,7 +18,7 @@ import services from './services/index.js';
 import appTemplate from './screens/app.html';
 
 // style
-import styles from './index.scss';
+import './index.scss';
 
 function onAppStart (config) {
   config.apiHeader = localStorage.getItem('apiHeader');

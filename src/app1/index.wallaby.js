@@ -2,9 +2,10 @@
 import 'lodash';
 import 'angular';
 
-
 import uibs from 'angular-ui-bootstrap';
 import uiRouter from 'angular-ui-router';
+
+import core from '../core/index.js'
 
 // config
 import routeConfig from './config/route.js';
@@ -17,7 +18,7 @@ import services from './services/index.js';
 import appTemplate from './screens/app.html';
 
 // style
-import styles from 'index.scss';
+import './index.scss';
 
 function onAppStart (config) {
   config.apiHeader = localStorage.getItem('apiHeader');
@@ -26,6 +27,7 @@ function onAppStart (config) {
 const deps = [
   uibs,
   uiRouter,
+  core,
   screens,
   components,
   services
@@ -37,7 +39,4 @@ export default angular.module('ng-starter', deps)
     template: appTemplate
   })
   .value('config', {})
-  .config(routeConfig)
-  .run(onAppStart);
-
-angular.bootstrap(document, ['ng-starter']);
+  .name;
