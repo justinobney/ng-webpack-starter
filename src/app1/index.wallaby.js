@@ -1,5 +1,4 @@
 // npm
-import 'lodash';
 import 'angular';
 
 import uibs from 'angular-ui-bootstrap';
