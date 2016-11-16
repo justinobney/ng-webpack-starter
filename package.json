@@ -1,11 +1,11 @@
 {
-  "name": "ng-webpack-starter",
+  "name": "ng-webpack-starter-shared-core",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --devtool eval --config webpack.config.js --progress --colors --hot",
-    "bundle": "webpack --config webpack.config.prod.js"
+    "start": "webpack-dev-server --devtool eval --config webpack.config.js --progress --colors --hot --content-base build/",
+    "bundle": "webpack --config webpack.config.prod.js",
+    "test-bundle": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",

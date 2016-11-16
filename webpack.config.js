@@ -1,21 +1,41 @@
 var path = require('path');
+var SplitByPathPlugin = require('webpack-split-by-path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var resolve = path.resolve;
+var _slice = [].slice;
+var PROJECT_PATH = resolve(__dirname, './src');
+
+function inProject() {
+  var resolved = resolve.apply(resolve, [PROJECT_PATH].concat(_slice.apply(arguments)));
+  console.log('inProject', arguments, resolved);
+  return resolved;
+}
 
 module.exports = {
 
   // set the context (optional)
   context: path.join( __dirname, './src'),
   // entry: 'index.js',
-  entry: ['webpack/hot/dev-server', path.resolve(__dirname, './src/index.js')],
+  entry: {
+    app1: ['webpack/hot/dev-server', path.resolve(__dirname, './src/app1/index.js')]
+  },
+
   output: {
-    path: path.resolve(__dirname, './src'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, './build'),
+    filename: "[name].js", // filename: "[name]-[hash].js",
+    chunkFilename: "[name].js" //chunkFilename: "[name]-[hash].js"
   },
 
   // enable loading modules relatively (without the ../../ prefix)
   resolve: {
     root: path.join( __dirname, '/src'),
     modulesDirectories: ['src', 'tests', 'node_modules'],
-    extensions: ['', '.webpack.js', '.js']
+    extensions: ['', '.webpack.js', '.js'],
+    alias: {
+      core: inProject('core'),
+      app1: inProject('app1'),
+    },
   },
 
   module: {
@@ -43,7 +63,10 @@ module.exports = {
   },
 
   sassLoader: {
-    includePaths: [path.resolve(__dirname, "./src")]
+    includePaths: [
+      path.resolve(__dirname, "./src/core"),
+      path.resolve(__dirname, "./src/app1"),
+    ]
   },
 
   // webpack dev server configuration
@@ -52,6 +75,17 @@ module.exports = {
     noInfo: false,
     hot: true
   },
+
+  plugins: [
+    new SplitByPathPlugin([
+      {
+        name: 'vendor',
+        path: path.join(__dirname, 'node_modules')
+      }
+    ], {
+      manifest: 'app-entry'
+    })
+  ],
 
   // support source maps
   devtool: "#inline-source-map"

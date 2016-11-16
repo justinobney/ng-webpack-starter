@@ -8,20 +8,24 @@ module.exports = {
   context: path.join( __dirname, './src'),
   // entry: 'index.js',
   entry: {
-    app: path.join(__dirname, './src/index.js')
+    app1: path.resolve(__dirname, './src/app1/index.js')
   },
 
   output: {
-    path: __dirname + '/dist',
-    filename: "[name].js",
-    chunkFilename: "[name].js"
+    path: path.resolve(__dirname, './dist'),
+    filename: "[name].js", // filename: "[name]-[hash].js",
+    chunkFilename: "[name].js" //chunkFilename: "[name]-[hash].js"
   },
 
   // enable loading modules relatively (without the ../../ prefix)
   resolve: {
     root: path.join( __dirname, '/src'),
     modulesDirectories: ['src', 'tests', 'node_modules'],
-    extensions: ['', '.webpack.js', '.js']
+    extensions: ['', '.webpack.js', '.js'],
+    alias: {
+      core: inProject('core'),
+      app1: inProject('app1'),
+    },
   },
 
   module: {
@@ -49,14 +53,10 @@ module.exports = {
   },
 
   sassLoader: {
-    includePaths: [path.resolve(__dirname, "./src")]
-  },
-
-  // webpack dev server configuration
-  devServer: {
-    contentBase: "./src",
-    noInfo: false,
-    hot: true
+    includePaths: [
+      path.resolve(__dirname, "./src/core"),
+      path.resolve(__dirname, "./src/app1"),
+    ]
   },
 
   plugins: [
