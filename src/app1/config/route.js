@@ -8,7 +8,7 @@ export default function routeConfig(
     .state('app', {
       abstract: true,
       url: '/',
-      component: 'app'
+      component: 'main'
     })
     .state('app.home', {
       url: 'home',

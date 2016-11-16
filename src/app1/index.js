@@ -10,12 +10,10 @@ import core from 'core/index.js'
 // config
 import routeConfig from './config/route.js';
 
+import layout from './layout/index.js';
 import screens from './screens/index.js';
 import components from './components/index.js'
 import services from './services/index.js';
-
-// app template
-import appTemplate from './screens/app.html';
 
 // style
 import './index.scss';
@@ -28,6 +26,7 @@ const deps = [
   uibs,
   uiRouter,
   core,
+  layout,
   screens,
   components,
   services
@@ -35,9 +34,6 @@ const deps = [
 
 
 export default angular.module('ng-starter', deps)
-  .component('app', {
-    template: appTemplate
-  })
   .value('config', {})
   .config(routeConfig)
   .run(onAppStart);
