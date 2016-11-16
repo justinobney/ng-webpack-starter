@@ -12,6 +12,7 @@
 ### what you get?
 - Minimal AngularJS development environment
 - Smart folder structure
+- Shared core Angular module
 - Set of basic loaders includes: Babel, json, scss, html, fonts and images.
 - Karma testing setup
 - WallabyJS testing setup
