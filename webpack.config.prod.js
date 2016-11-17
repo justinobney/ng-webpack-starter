@@ -1,6 +1,18 @@
 var path = require('path');
 var SplitByPathPlugin = require('webpack-split-by-path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var extractCSS = new ExtractTextPlugin('[name].css');
+
+var resolve = path.resolve;
+var _slice = [].slice;
+var PROJECT_PATH = resolve(__dirname, './src');
+
+function inProject() {
+  var resolved = resolve.apply(resolve, [PROJECT_PATH].concat(_slice.apply(arguments)));
+  console.log('inProject', arguments, resolved);
+  return resolved;
+}
+
 
 module.exports = {
 
@@ -35,9 +47,9 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader:"babel", query: { presets: ['es2015', 'stage-1'] } },
 
       // load css and process less
-      { test: /\.css$/, loader: "style!css"},
+      { test: /\.css$/, loader: extractCSS.extract(["css"])},
 
-      { test: /\.scss$/, loaders: ["style", "css", "sass"] },
+      { test: /\.scss$/, loader: extractCSS.extract(["css", "sass"]) },
 
       // load JSON files and HTML
       { test: /\.json$/, loader: "json" },
@@ -67,7 +79,8 @@ module.exports = {
       }
     ], {
       manifest: 'app-entry'
-    })
+    }),
+    extractCSS
   ],
 
   // support source maps

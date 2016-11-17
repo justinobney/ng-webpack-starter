@@ -1,6 +1,6 @@
 var path = require('path');
 var SplitByPathPlugin = require('webpack-split-by-path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var resolve = path.resolve;
 var _slice = [].slice;
@@ -23,8 +23,8 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: "[name].js", // filename: "[name]-[hash].js",
-    chunkFilename: "[name].js" //chunkFilename: "[name]-[hash].js"
+    filename: '[name].js', // filename: '[name]-[hash].js',
+    chunkFilename: '[name].js' //chunkFilename: '[name]-[hash].js'
   },
 
   // enable loading modules relatively (without the ../../ prefix)
@@ -42,20 +42,20 @@ module.exports = {
     loaders: [
 
       // load and compile javascript
-      { test: /\.js$/, exclude: /node_modules/, loader:"babel", query: { presets: ['es2015', 'stage-1'] } },
+      { test: /\.js$/, exclude: /node_modules/, loader:'babel', query: { presets: ['es2015', 'stage-1'] } },
 
       // load css and process less
-      { test: /\.css$/, loader: "style!css"},
+      { test: /\.css$/, loader: 'style!css'},
 
-      { test: /\.scss$/, loaders: ["style", "css", "sass"] },
+      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
 
       // load JSON files and HTML
-      { test: /\.json$/, loader: "json" },
-      { test: /\.html$/, exclude: /node_modules/, loader:"raw" },
+      { test: /\.json$/, loader: 'json' },
+      { test: /\.html$/, exclude: /node_modules/, loader:'raw' },
 
       // load fonts(inline base64 URLs for <=8k)
-      { test: /\.(ttf|eot|svg|otf)$/, loader: "file" },
-      { test: /\.woff(2)?$/, loader: "url?limit=8192&minetype=application/font-woff"},
+      { test: /\.(ttf|eot|svg|otf)$/, loader: 'file' },
+      { test: /\.woff(2)?$/, loader: 'url?limit=8192&minetype=application/font-woff'},
 
       // load images (inline base64 URLs for <=8k images)
       {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
@@ -64,14 +64,14 @@ module.exports = {
 
   sassLoader: {
     includePaths: [
-      path.resolve(__dirname, "./src/core"),
-      path.resolve(__dirname, "./src/app1"),
+      path.resolve(__dirname, './src/core'),
+      path.resolve(__dirname, './src/app1'),
     ]
   },
 
   // webpack dev server configuration
   devServer: {
-    contentBase: "./src",
+    contentBase: './src',
     noInfo: false,
     hot: true
   },
@@ -88,5 +88,5 @@ module.exports = {
   ],
 
   // support source maps
-  devtool: "#inline-source-map"
+  devtool: '#inline-source-map'
 };

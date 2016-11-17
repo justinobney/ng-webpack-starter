@@ -1,5 +1,4 @@
 // npm
-import 'lodash';
 import 'angular';
 
 import uibs from 'angular-ui-bootstrap';
@@ -15,13 +14,6 @@ import screens from './screens/index.js';
 import components from './components/index.js'
 import services from './services/index.js';
 
-// style
-import './index.scss';
-
-function onAppStart (config) {
-  config.apiHeader = localStorage.getItem('apiHeader');
-}
-
 const deps = [
   uibs,
   uiRouter,
@@ -31,7 +23,6 @@ const deps = [
   components,
   services
 ];
-
 
 export default angular.module('ng-starter', deps)
   .value('config', {})
