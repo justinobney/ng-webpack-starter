@@ -1,4 +1,4 @@
-import styles from './index.scss';
+import './index.scss';
 import template from './index.html';
 
 function controller(){

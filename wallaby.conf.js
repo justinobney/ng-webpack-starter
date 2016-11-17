@@ -14,7 +14,7 @@ webpackConfig.module.loaders = webpackConfig.module.loaders.filter(function (l) 
 webpackConfig.entry = null;
 
 webpackConfig.entryPatterns = [
-  'src/app1/index.wallaby.js',
+  'src/app1/index.test.js',
   'before-each-test.js',
   'src/**/*.spec.js'
 ];
