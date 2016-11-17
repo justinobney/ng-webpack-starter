@@ -1,0 +1,18 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+main-layout {
+  @include flexColumn();
+  @include flex();
+
+  .main-layout-component-header {
+    padding: $padding;
+    color: $primary;
+    background: $bg-primary;
+  }
+  .main-layout-component-content {
+    @include flexContent();
+    color: $tertiary;
+    background: $bg-tertiary;
+  }
+}

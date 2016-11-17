@@ -1,3 +1,5 @@
+import './index.scss';
+
 import home from './home/index.js';
 
 const deps = [

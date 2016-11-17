@@ -1,7 +1,7 @@
-import main from './main/index.js';
+import mainLayout from './main-layout/index.js';
 
 const deps = [
-    main
+    mainLayout
 ];
 
 export default angular

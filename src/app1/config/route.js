@@ -8,12 +8,12 @@ export default function routeConfig(
     .state('app', {
       abstract: true,
       url: '/',
-      component: 'main'
+      component: 'mainLayout'
     })
     .state('app.home', {
       url: 'home',
       component: 'home',
-      data: {requiresAuth:true}
+    //   data: {requiresAuth:true}
     })
     .state('app.login', {
       url: 'login',

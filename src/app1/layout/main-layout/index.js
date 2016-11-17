@@ -2,6 +2,6 @@
 import template from './index.html';
 
 export default angular
-  .module('ng-starter.layout.main', [])
-  .component('main', { template })
+  .module('ng-starter.layout.mainLayout', [])
+  .component('mainLayout', { template })
   .name;

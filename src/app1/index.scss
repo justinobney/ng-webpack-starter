@@ -1,5 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+@import "mixins.scss";
+
 body {
   font-family: 'Open Sans', sans-serif;
+  @include flexColumn();
+  @include flex();
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
