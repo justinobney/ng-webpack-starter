@@ -4,10 +4,15 @@ const template = `
 </div>
 `;
 
-function controller(){
+export function controller(sample){
   const ctrl = this;
 
-  ctrl.data = 'Sample Component'
+  ctrl.data = 'Sample Component';
+  ctrl.onClick = onClick;
+
+  function onClick(){
+    sample.method();
+  }
 }
 
 

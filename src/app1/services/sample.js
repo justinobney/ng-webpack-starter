@@ -1,5 +1,10 @@
 function SampleService(){
     this.foo = 'bar';
+    this.method = method;
+
+    function method(){
+
+    }
 }
 
 export default angular
