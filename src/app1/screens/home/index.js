@@ -1,10 +1,10 @@
 import './index.scss';
 import template from './index.html';
 
-function controller(){
-  const home = this;
+function controller(auth){
+  const ctrl = this;
 
-  home.$onInit = () => {
+  ctrl.$onInit = () => {
     console.log('home init');
   }
 }

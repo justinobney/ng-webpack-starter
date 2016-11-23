@@ -1,8 +1,4 @@
-export default function routeConfig(
-  $stateProvider, $urlRouterProvider, $transitionsProvider
-) {
-
-  registerAuthHook();
+export default function routeConfig( $stateProvider, $urlRouterProvider ) {
 
   $stateProvider
     .state('app', {
@@ -13,7 +9,7 @@ export default function routeConfig(
     .state('app.home', {
       url: 'home',
       component: 'home',
-    //   data: {requiresAuth:true}
+      data: {requiresAuth:true}
     })
     .state('app.login', {
       url: 'login',
@@ -21,25 +17,4 @@ export default function routeConfig(
     });
 
   $urlRouterProvider.otherwise("/home");
-
-  function registerAuthHook(){
-    let requiresAuthCriteria = {
-      to: (state) => state.data && state.data.requiresAuth
-    };
-
-    let redirectToLogin = (transition) => {
-      // let AuthService = transition.injector().get('AuthService');
-      let $state = transition.router.stateService;
-      // if (!AuthService.isAuthenticated()) {
-        return $state.target('app.login', undefined, { location: true });
-      // }
-    };
-
-    // Register the "requires auth" hook with the TransitionsService
-    $transitionsProvider.onBefore(
-      requiresAuthCriteria,
-      redirectToLogin,
-      {priority: 10}
-    );
-  }
 }
