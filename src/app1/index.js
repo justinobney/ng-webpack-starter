@@ -15,7 +15,7 @@ import components from './components/index.js'
 import services from './services/index.js';
 
 // style
-import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 
 const deps = [
