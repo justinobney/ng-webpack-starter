@@ -8,7 +8,11 @@ export default function routeConfig(
     .state('app', {
       abstract: true,
       url: '/',
-      component: 'mainLayout'
+      template: `
+      <main-layout>
+        <nav>Main nav here...</nav>
+      </main-layout>
+      `
     })
     .state('app.home', {
       url: 'home',
@@ -17,7 +21,7 @@ export default function routeConfig(
     })
     .state('app.login', {
       url: 'login',
-      component: 'coreLogin'
+      template: 'login'
     });
 
   $urlRouterProvider.otherwise("/home");

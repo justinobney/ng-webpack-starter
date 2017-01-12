@@ -5,5 +5,5 @@ const deps = [
 ];
 
 export default angular
-  .module('ng-starter.layout', deps)
+  .module('ng-starter.core.layout', deps)
   .name;
