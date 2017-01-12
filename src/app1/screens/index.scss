@@ -4,16 +4,19 @@
 main-layout {
   @include flexColumn();
   @include flex();
+  background: $bg-primary;
+  margin-top: 51px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  overflow-y: auto;
 
   .main-layout-component-header {
-    color: $primary;
-    background: $bg-primary;
   }
+
   .main-layout-component-content {
     @include flexContent();
-    color: $tertiary;
-    background: $bg-tertiary;
-    margin-top: 71px;
+    color: $text-color;
+    background: $bg-page;
     border-radius: 4px;
   }
 }
