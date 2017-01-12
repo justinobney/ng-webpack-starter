@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
-  <script src="vendor.js"></script>
+  <link rel="stylesheet" href="vendor.css" media="screen">
+  <link rel="stylesheet" href="app1.css" media="screen">
+  <script src="./vendor.js"></script>
 </head>
 
-<body>
-  <div ui-view></div>
+<body ui-view>
   <!-- served from webpack-dev-server -->
   <script src="http://localhost:8080/webpack-dev-server.js"></script>
-  <script src="app1.js"></script>
+  <script src="./app1.js"></script>
 </body>
 </html>

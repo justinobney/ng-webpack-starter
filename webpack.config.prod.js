@@ -1,4 +1,5 @@
 var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var SplitByPathPlugin = require('webpack-split-by-path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var extractCSS = new ExtractTextPlugin('[name].css');
@@ -80,7 +81,8 @@ module.exports = {
     ], {
       manifest: 'app-entry'
     }),
-    extractCSS
+    extractCSS,
+    new CopyWebpackPlugin([{from: './src/app1/index.html'}])
   ],
 
   // support source maps

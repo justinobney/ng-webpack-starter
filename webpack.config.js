@@ -1,6 +1,8 @@
 var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var SplitByPathPlugin = require('webpack-split-by-path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var extractCSS = new ExtractTextPlugin('[name].css');
 
 var resolve = path.resolve;
 var _slice = [].slice;
@@ -45,9 +47,9 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader:'babel', query: { presets: ['es2015', 'stage-1'] } },
 
       // load css and process less
-      { test: /\.css$/, loader: 'style!css'},
+      { test: /\.css$/, loader: extractCSS.extract(["css"])},
 
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+      { test: /\.scss$/, loader: extractCSS.extract(["css", "sass"]) },
 
       // load JSON files and HTML
       { test: /\.json$/, loader: 'json' },
@@ -82,9 +84,9 @@ module.exports = {
         name: 'vendor',
         path: path.join(__dirname, 'node_modules')
       }
-    ], {
-      manifest: 'app-entry'
-    })
+    ], {manifest: 'app-entry'}),
+    extractCSS,
+    new CopyWebpackPlugin([{from: './app1/index.html'}])
   ],
 
   // support source maps
