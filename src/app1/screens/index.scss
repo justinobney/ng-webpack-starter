@@ -1,12 +1,11 @@
-@import "variables.scss";
-@import "mixins.scss";
+@import "~core/variables.scss";
+@import "~core/mixins.scss";
 
 main-layout {
   @include flexColumn();
   @include flex();
 
   .main-layout-component-header {
-    padding: $padding;
     color: $primary;
     background: $bg-primary;
   }
@@ -14,5 +13,7 @@ main-layout {
     @include flexContent();
     color: $tertiary;
     background: $bg-tertiary;
+    margin-top: 71px;
+    border-radius: 4px;
   }
 }
