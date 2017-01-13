@@ -1,7 +1,14 @@
 var path = require('path');
+
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var SplitByPathPlugin = require('webpack-split-by-path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var copyIndex = new CopyWebpackPlugin([{from: './app1/index.html'}]);
+var splitPath = new SplitByPathPlugin(
+  [{ name: 'vendor', path: path.join(__dirname, 'node_modules') }],
+  {manifest: 'app-entry'}
+);
 var extractCSS = new ExtractTextPlugin('[name].css');
 
 var resolve = path.resolve;
@@ -79,14 +86,10 @@ module.exports = {
   },
 
   plugins: [
-    new SplitByPathPlugin([
-      {
-        name: 'vendor',
-        path: path.join(__dirname, 'node_modules')
-      }
-    ], {manifest: 'app-entry'}),
+    splitPath,
     extractCSS,
-    new CopyWebpackPlugin([{from: './app1/index.html'}])
+    copyIndex
+    // new BundleAnalyzerPlugin()
   ],
 
   // support source maps
