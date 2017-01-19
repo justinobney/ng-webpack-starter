@@ -1,7 +1,7 @@
-import sample from './sample.js';
+import api from './api.js';
 
 const deps = [
-  sample
+  api
 ];
 
 export default angular

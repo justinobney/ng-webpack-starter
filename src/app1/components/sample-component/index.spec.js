@@ -8,7 +8,6 @@ describe('Component: sample-component', () => {
 
     beforeEach(() => {
       angular.mock.module(
-        'ng-starter.services.sample',
         'ng-starter.components.sample-component'
       );
 
@@ -22,12 +21,6 @@ describe('Component: sample-component', () => {
     });
 
     it('FUBAR', () => {
-      const sample = $injector.get('sample');
-      spyOn(sample, 'method');
 
-      const ctrl = $controller(controller);
-      ctrl.onClick();
-
-      expect(sample.method).toHaveBeenCalled();
   });
 });

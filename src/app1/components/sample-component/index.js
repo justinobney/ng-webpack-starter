@@ -1,18 +1,13 @@
 const template = `
 <div>
-  {{$ctrl.data}}
+  Build Environment: {{$ctrl.environment}}
 </div>
 `;
 
-export function controller(sample){
+export function controller(){
   const ctrl = this;
 
-  ctrl.data = 'Sample Component';
-  ctrl.onClick = onClick;
-
-  function onClick(){
-    sample.method();
-  }
+  ctrl.environment = process.env.NODE_ENV;
 }
 
 
