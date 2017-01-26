@@ -12,7 +12,7 @@ module.exports = {
         "beforeEach": true,
         "expect": true,
     },
-    "parser": "babel-eslint",
+
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 6,
