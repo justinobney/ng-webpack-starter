@@ -1,6 +1,13 @@
 export default function routeConfig(
-  $stateProvider, $urlRouterProvider, $transitionsProvider
+  $stateProvider, $urlRouterProvider,
+  $transitionsProvider, authProvider
 ) {
+
+  authProvider.init({
+    domain: 'jobney.auth0.com',
+    clientID: '674dbOyKxTpDFg2leTmercsYBLAkVbhq',
+    loginUrl: '/#!/login'
+  });
 
   registerAuthHook();
 
@@ -9,34 +16,21 @@ export default function routeConfig(
       abstract: true,
       url: '/',
       template: `
-      <main-layout>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Sample App</a>
-            </div>
-          </div>
-        </nav>
-      </main-layout>
+        <main-layout>
+          <main-nav></main-nav>
+        </main-layout>
       `
     })
     .state('app.home', {
       url: 'home',
       component: 'home',
-    //   data: {requiresAuth:true}
+      data: {requiresAuth:true}
     })
     .state('app.login', {
       url: 'login',
-      template: 'login'
+      template: 'login',
+      controller: loginController
     });
-
-  $urlRouterProvider.otherwise("/home");
 
   function registerAuthHook(){
     let requiresAuthCriteria = {
@@ -44,11 +38,11 @@ export default function routeConfig(
     };
 
     let redirectToLogin = (transition) => {
-      // let AuthService = transition.injector().get('AuthService');
+      let auth = transition.injector().get('auth');
       let $state = transition.router.stateService;
-      // if (!AuthService.isAuthenticated()) {
+      if (!auth.isAuthenticated) {
         return $state.target('app.login', undefined, { location: true });
-      // }
+      }
     };
 
     // Register the "requires auth" hook with the TransitionsService
@@ -57,5 +51,54 @@ export default function routeConfig(
       redirectToLogin,
       {priority: 10}
     );
+  }
+
+  $urlRouterProvider.otherwise('/home');
+
+  function loginController($state, auth, store, jwtHelper){
+    const ctrl = this;
+
+    ctrl.$onInit = () => {
+      const token = store.get('token');
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          if (!auth.isAuthenticated) {
+            auth.authenticate(store.get('profile'), token).then(
+              (profile) => {
+                console.log('Logged in via refresh token and got profile');
+                console.log(profile);
+                $state.go('app.home');
+                // Successful login, now redirect to secured content.
+              },
+              () => {
+                console.log('refresh auth failed');
+                login();
+              }
+            );
+          }
+        } else {
+          console.log('jwt expired');
+          login();
+        }
+      } else {
+        console.log('no token');
+        login();
+      }
+    };
+
+    function login(){
+      auth.signin({
+        authParams: {
+          scope: 'openid name email' // Specify the scopes you want to retrieve
+        }
+      }, function(profile, idToken, accessToken, state, refreshToken) {
+        console.log(profile, idToken, accessToken, state, refreshToken); // eslint-disable-line
+        store.set('profile', profile);
+        store.set('token', idToken);
+        $state.go('app.home');
+      }, function(err) {
+        console.log('Error :(', err); // eslint-disable-line
+      });
+    }
   }
 }

@@ -6,6 +6,9 @@ import uiRouter from 'angular-ui-router';
 
 import layout from './layout/index.js';
 
+import angularStorage from 'angular-storage';
+import angularJwt from 'angular-jwt';
+
 // config
 import routeConfig from './config/route.js';
 
