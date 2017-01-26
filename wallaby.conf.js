@@ -14,37 +14,24 @@ webpackConfig.module.loaders = webpackConfig.module.loaders.filter(function (l) 
 webpackConfig.entry = null;
 
 webpackConfig.entryPatterns = [
-  'src/app1/index.test.js',
+  'src/index.test.js',
   'before-each-test.js',
   'src/**/*.spec.js'
 ];
 
-function getPatterns(folder){
-  return [
-    {pattern: `src/${folder}/**/*.html`, load: false},
-    {pattern: `src/${folder}/**/*.scss`, load: false},
-    {pattern: `src/${folder}/**/*.css`, load: false},
-    {pattern: `src/${folder}/**/*.js`, load: false},
-    {pattern: `src/${folder}/**/*.spec.js`, ignore: true}
-  ]
-}
-
 module.exports = function (wallaby) {
-  var staticFiles = [
-      {pattern: 'node_modules/babel-polyfill/browser.js', instrument: false},
-      {pattern: 'before-each-test.js', load: false},
-  ];
-  var files = [].concat.apply(
-    staticFiles,
-    [
-      'core',
-      'app1',
-    ].map(folder => getPatterns(folder))
-  );
-  console.log(files);
+
   return {
       debug: true,
-      files: files,
+      files: [
+          {pattern: 'node_modules/babel-polyfill/browser.js', instrument: false},
+          {pattern: 'before-each-test.js', load: false},
+          {pattern: `src/**/*.html`, load: false},
+          {pattern: `src/**/*.scss`, load: false},
+          {pattern: `src/**/*.css`, load: false},
+          {pattern: `src/**/*.js`, load: false},
+          {pattern: `src/**/*.spec.js`, ignore: true}
+      ],
       tests: [
           {pattern: 'src/**/*.spec.js', load: false}
       ],

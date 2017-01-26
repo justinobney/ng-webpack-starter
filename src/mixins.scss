@@ -1,4 +1,4 @@
-@import "~core/variables.scss";
+@import "variables.scss";
 
 @mixin flex($values: 1) {
   -webkit-box-flex: $values;

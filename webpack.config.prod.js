@@ -1,15 +1,14 @@
 var path = require('path');
 
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var SplitByPathPlugin = require('webpack-split-by-path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-var copyIndex = new CopyWebpackPlugin([{from: './app1/index.html'}]);
 var splitPath = new SplitByPathPlugin(
   [{ name: 'vendor', path: path.join(__dirname, 'node_modules') }],
   {manifest: 'app-entry'}
 );
-var extractCSS = new ExtractTextPlugin('[name].css');
+var extractCSS = new ExtractTextPlugin('[name].[hash].css');
 
 var resolve = path.resolve;
 var _slice = [].slice;
@@ -27,13 +26,13 @@ module.exports = {
   context: path.join( __dirname, './src'),
   // entry: 'index.js',
   entry: {
-    app1: path.resolve(__dirname, './src/app1/index.js')
+    app: path.resolve(__dirname, './src/index.js')
   },
 
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: "[name].js", // filename: "[name]-[hash].js",
-    chunkFilename: "[name].js" //chunkFilename: "[name]-[hash].js"
+    filename: "[name].[hash].js", // filename: "[name]-[hash].js",
+    chunkFilename: "[name].[hash].js" //chunkFilename: "[name]-[hash].js"
   },
 
   // enable loading modules relatively (without the ../../ prefix)
@@ -41,10 +40,7 @@ module.exports = {
     root: path.join( __dirname, '/src'),
     modulesDirectories: ['src', 'tests', 'node_modules'],
     extensions: ['', '.webpack.js', '.js'],
-    alias: {
-      core: inProject('core'),
-      app1: inProject('app1'),
-    },
+    alias: {},
   },
 
   module: {
@@ -73,15 +69,16 @@ module.exports = {
 
   sassLoader: {
     includePaths: [
-      path.resolve(__dirname, "./src/core"),
-      path.resolve(__dirname, "./src/app1"),
+      path.resolve(__dirname, "./src"),
     ]
   },
 
   plugins: [
     splitPath,
     extractCSS,
-    copyIndex
+    new HtmlWebpackPlugin({
+      template: 'index.html.ejs'
+    })
   ],
 
   // support source maps

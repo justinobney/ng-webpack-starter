@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Starter App</title>
+</head>
+
+<body ui-view>
+  <% if (htmlWebpackPlugin.options.devServer) { %>
+    <script src="http://localhost:8080/webpack-dev-server.js"></script>
+  <% } %>
+</body>
+</html>
