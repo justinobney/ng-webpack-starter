@@ -4,19 +4,18 @@
 
 ### How to run:
 1. clone the project
-2. run `npm i`
-3. run `npm start`
+2. run `yarn`
+3. run `yarn start`
 4. navigate to 'localhost:8080'
 5. start developing your Angular app with ES6 (javascript 2015)
 
 ### what you get?
 - Minimal AngularJS development environment
 - Smart folder structure
-- Shared core Angular module
 - Set of basic loaders includes: Babel, json, scss, html, fonts and images.
 - Karma testing setup
 - WallabyJS testing setup
 
 ### bundle for deploy
-- run `npm run bundle` to package your code for deploy
+- run `yarn run bundle` to package your code for deploy
 - find it in the `dist` folder
