@@ -3,33 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development  webpack-dev-server --config webpack.config.js --progress --colors --hot",
-    "bundle": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "start": "cross-env NODE_ENV=development npm run bundle && http-server dist/ -p 8001"
+    "dev":
+      "cross-env NODE_ENV=development  webpack-dev-server --config webpack.config.js --progress --colors --hot",
+    "bundle":
+      "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "start":
+      "cross-env NODE_ENV=development npm run bundle && http-server dist/ -p 8001"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/justinobney/ng-webpack-starter.git"
   },
-  "keywords": [
-    "angularjs",
-    "webpack",
-    "es6",
-    "javascript"
-  ],
+  "keywords": ["angularjs", "webpack", "es6", "javascript"],
   "author": "Justin Obney <justinobney@gmail.com>",
   "license": "MIT",
   "babel": {
-    "presets": [
-      "es2015",
-      "stage-1"
-    ],
-    "plugins": [
-      "transform-inline-environment-variables"
-    ]
+    "presets": ["es2015", "stage-1"],
+    "plugins": ["transform-inline-environment-variables"]
   },
   "devDependencies": {
-    "angular-mocks": "^1.6.1",
+    "angular-mocks": "1.5.11",
     "babel-core": "6.3.17",
     "babel-loader": "^6.2.10",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -69,14 +62,36 @@
     "webpack-split-by-path": "0.0.10"
   },
   "dependencies": {
-    "angular": "^1.6.1",
-    "angular-jwt": "^0.1.9",
-    "angular-resource": "^1.6.1",
-    "angular-storage": "0.0.15",
+    "angular": "1.5.11",
+    "angular-resource": "1.5.11",
     "angular-ui-bootstrap": "^2.4.0",
     "angular-ui-router": "^1.0.0-beta.2",
-    "auth0-angular": "^4.2.7",
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.4"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "globals": {
+      "jasmine": true
+    },
+    "rules": {
+      "semi": [
+        "warn",
+        "always"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "never"
+      ],
+      "no-use-before-define": 0
+    }
   }
 }

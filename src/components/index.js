@@ -1,8 +1,5 @@
 import sampleComponent from './sample-component/index.js';
 
-const deps = [
-  sampleComponent
-];
+const deps = [sampleComponent];
 
-
-export default angular.module('ng-starter.components', deps).name
+export default angular.module('ng-starter.components', deps).name;

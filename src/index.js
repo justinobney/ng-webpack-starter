@@ -3,10 +3,6 @@ import 'angular';
 
 import uibs from 'angular-ui-bootstrap';
 import uiRouter from 'angular-ui-router';
-import auth0 from 'auth0-angular';
-import angularStorage from 'angular-storage';
-import angularJwt from 'angular-jwt';
-
 
 // config
 import routeConfig from './config/route.js';
@@ -20,23 +16,11 @@ import services from './services/index.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 
-const deps = [
-  uibs,
-  uiRouter,
-  auth0,
-  angularStorage,
-  angularJwt,
-  layout,
-  screens,
-  components,
-  services
-];
+const deps = [uibs, uiRouter, layout, screens, components, services];
 
-export default angular.module('ng-starter', deps)
+export default angular
+  .module('ng-starter', deps)
   .value('config', {})
-  .config(routeConfig)
-  .run((auth) => {
-    auth.hookEvents();
-  });
+  .config(routeConfig);
 
 angular.bootstrap(document, ['ng-starter']);

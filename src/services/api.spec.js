@@ -1,22 +1,19 @@
 describe('Service: apiService', () => {
-    let $injector, $rootScope;
-    let api;
+  let $injector;
+  let $rootScope;
+  let api;
 
-    beforeEach(() => {
-      angular.mock.module(
-        'ng-starter.services.api'
-      );
+  beforeEach(() => {
+    angular.mock.module('ng-starter.services.api');
 
-      angular.mock.inject(
-        _$injector_ => {
-          $injector = _$injector_;
-          $rootScope = $injector.get('$rootScope');
-          api = $injector.get('api');
-        }
-      );
+    angular.mock.inject(_$injector_ => {
+      $injector = _$injector_;
+      $rootScope = $injector.get('$rootScope');
+      api = $injector.get('api');
     });
+  });
 
-    it('is defiend', () => {
-      expect(api.get).toBeDefined();
+  it('is defiend', () => {
+    expect(api.get).toBeDefined();
   });
 });

@@ -2,9 +2,6 @@ import './index.scss';
 
 import home from './home/index.js';
 
-const deps = [
-  home
-];
+const deps = [home];
 
-
-export default angular.module('ng-starter.screens', deps).name
+export default angular.module('ng-starter.screens', deps).name;

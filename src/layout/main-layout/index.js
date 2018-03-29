@@ -6,7 +6,6 @@ export default angular
   .module('ng-starter.layout.mainLayout', [])
   .component('mainLayout', {
     template,
-    transclude: true
+    transclude: true,
   })
-  .component('mainNav', { template: nav })
-  .name;
+  .component('mainNav', {template: nav}).name;
